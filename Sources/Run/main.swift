@@ -15,32 +15,12 @@
 /// .run() runs the Droplet's commands, 
 /// if no command is given, it will default to "serve"
 
-// import App
+import App
 
-//let config = try Config()
-//try config.setup()
-//
-//let drop = try Droplet(config)
-//try drop.setup()
-//
-//try drop.run()
+let config = try Config()
+try config.setup()
 
-import Vapor
+let drop = try Droplet(config)
+try drop.setup()
 
-do {
-    let drop = try Droplet()
-
-    drop.get { request in
-        return "Hello Vapor!"
-    }
-
-    do {
-        try drop.run()
-    } catch {
-        print("Exception thrown at run()")
-    }
-
-} catch (let error) {
-    print("Couldn't create the Droplet")
-    print(error.localizedDescription)
-}
+try drop.run()
